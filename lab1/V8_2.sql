@@ -13,7 +13,7 @@ ORDER BY HireDate DESC;
 GO
 
 SELECT BusinessEntityID, DepartmentID, StartDate, EndDate, 
-YEAR(ISNULL(EndDate, GETDATE())) - YEAR(StartDate) AS YearsWorked
+DATEDIFF(YEAR, StartDate, ISNULL(EndDate, CURRENT_TIMESTAMP)) AS YearsWorked
 FROM HumanResources.EmployeeDepartmentHistory
 WHERE DepartmentID = 1;
 GO
